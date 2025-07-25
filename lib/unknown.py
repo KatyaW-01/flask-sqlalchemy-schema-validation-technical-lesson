@@ -34,3 +34,11 @@ except ValidationError as err:
     print(err.messages)    # {'is_friendly': ['Unknown field.']}
     print(err.valid_data)  # {'name': 'Snuggles', 'breed': 'Beagle', 'tail_wagging': True}
     
+
+#This behavior can be modified with the unknown option, which accepts one of the following values:
+
+#RAISE (default): raise a ValidationError if there are any unknown fields
+#EXCLUDE: exclude unknown fields from the deserialized result
+#INCLUDE: include the unknown fields in the deserialized result
+
+#You can specify the option during schema instantiation DogSchema(unknown=INCLUDE) or during loading DogSchema().load(friendly, unknown=INCLUDE).

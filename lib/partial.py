@@ -10,6 +10,7 @@ class UserSchema(Schema):
 result_1 = UserSchema().load({"name": "Noam", "age": 42})  #name and age required
 pprint(result_1)  # => {'age': 42, 'name': 'Noam'}
 
+#just print the age even though name is also a required field
 result_2 = UserSchema().load({"age": 42}, partial=("name",))  #age required
 # OR UserSchema(partial=('name',)).load({'age': 42})
 pprint(result_2)  # => {'age': 42}
