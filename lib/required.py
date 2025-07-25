@@ -16,4 +16,10 @@ hamster_data = [
     {}                                      # invalid, name is required
 ]
 
-HamsterSchema(many=True).load(hamster_data)  #raises ValidationError
+try:
+    HamsterSchema(many=True).load(hamster_data)  #raises ValidationError
+except ValidationError as err:
+    print("Valid data:")
+    pprint(err.valid_data)
+    print("Invalid data:")
+    pprint(err.messages)
