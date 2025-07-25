@@ -16,5 +16,11 @@ user_data = [
 ]
 
 # validate and deserialize the data
+try:
+    UserSchema(many=True).load(user_data)  #raises ValidationError
 
-UserSchema(many=True).load(user_data)  #raises ValidationError
+except ValidationError as err:
+    print("Valid data:")
+    pprint(err.valid_data)
+    print("Invalid data:")
+    pprint(err.messages)
